@@ -1,5 +1,5 @@
 import Koa from 'koa'
-import { compress } from 'koa-compress'
+import compress from 'koa-compress'
 
 const app = new Koa()
 
