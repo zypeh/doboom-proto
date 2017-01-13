@@ -1,0 +1,28 @@
+{
+  "name": "swaghouse",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:zypeh/swaghouse.git",
+  "author": "zypeh <zypeh.geek@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0",
+    "npm": ">=3.0"
+  },
+  "dependencies": {
+    "koa": "2",
+    "koa-compress": "next"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.6.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.21.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "buble": "^0.15.2",
+    "buble-loader": "^0.4.0",
+    "css-loader": "^0.26.1",
+    "flow-bin": "^0.37.4",
+    "webpack": "2.2.0-rc.3"
+  }
+}
