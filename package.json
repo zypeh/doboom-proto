@@ -13,6 +13,7 @@
     "colors": "^1.1.2",
     "import-dir": "^0.0.1",
     "koa": "2",
+    "koa-better-body": "^3.0.2",
     "koa-compose": "next",
     "koa-compress": "next",
     "koa-convert": "^1.2.0",
