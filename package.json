@@ -10,8 +10,13 @@
     "npm": ">=3.0"
   },
   "dependencies": {
+    "colors": "^1.1.2",
+    "import-dir": "^0.0.1",
     "koa": "2",
-    "koa-compress": "next"
+    "koa-compose": "next",
+    "koa-compress": "next",
+    "koa-convert": "^1.2.0",
+    "mongoose": "^4.7.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
@@ -22,7 +27,16 @@
     "buble": "^0.15.2",
     "buble-loader": "^0.4.0",
     "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.3",
     "flow-bin": "^0.37.4",
+    "html-webpack-plugin": "^2.26.0",
+    "koa-webpack-middleware": "^1.0.3",
+    "node-sass": "^4.3.0",
+    "sass-loader": "^4.1.1",
+    "sw-precache-webpack-plugin": "^0.7.1",
+    "url-loader": "^0.5.7",
+    "vue-loader": "^10.0.2",
+    "vue-template-compiler": "^2.1.8",
     "webpack": "2.2.0-rc.3"
   }
 }
