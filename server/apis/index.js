@@ -5,9 +5,9 @@ import composr from 'koa-compose'
 import Router from 'koa-router'
 
 const config: Array<{ folder: string, prefix: string }> = [
-  { folder: 'passport', prefix: '/v1/api' },
-  { folder: 'chat', prefix: '/v1/api' },
-  { folder: 'newsfeed', prefix: '/v1/api' },
+  { folder: 'passport', prefix: '/api/v1/auth' },
+  //{ folder: 'chat', prefix: '/v1/api' },
+  //{ folder: 'newsfeed', prefix: '/v1/api' },
 ]
 
 export default function () {
