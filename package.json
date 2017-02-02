@@ -17,7 +17,11 @@
     "koa-compose": "next",
     "koa-compress": "next",
     "koa-convert": "^1.2.0",
-    "mongoose": "^4.7.6"
+    "koa-passport": "3.0.0-rc.3",
+    "mongoose": "^4.7.6",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
