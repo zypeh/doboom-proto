@@ -1,17 +1,26 @@
+'use strict'
+
 import uniqueValidator from 'mongoose-unique-validator'
 import { genSalt, hash, compare } from 'bcrypt'
 import mongoose from 'mongoose-fill'
 import shortid from 'shortid'
 
 const UserSchema = new mongoose.Schema({
-    _id: { type: String, unique: true, default: shortid.generate },
-    email: { type: String, unique: true, required: true },
+    _id:      { type: String, unique: true, required: true, default: shortid.generate },
+    email:    { type: String, unique: true, required: true },
     username: { type: String, unique: true },
     password: { type: String },
+
+    provider_id: {
+        facebook: { type: String, default: null },
+        google:   { type: String, default: null },
+        twitter:  { type: String, default: null },
+    },
+
     provider: {
         facebook: { type: Array, default: [] },
-        google: { type: Array, default: [] },
-        twitter: { type: Array, default: [] },
+        google:   { type: Array, default: [] },
+        twitter:  { type: Array, default: [] },
     },
 
 }, {
