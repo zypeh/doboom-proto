@@ -5,13 +5,12 @@ import composr from 'koa-compose'
 import Router from 'koa-router'
 
 const config: Array<{ folder: string, prefix: string }> = [
-  { folder: 'passport', prefix: '/api/v1/auth' },
-  //{ folder: 'chat', prefix: '/v1/api' },
-  //{ folder: 'newsfeed', prefix: '/v1/api' },
+  { folder: 'apiv1', prefix: '/api/v1/' },
+  { folder: 'base', prefix: '' },
 ]
 
 export default function () {
-  const c = config.reduce((prev, curr) => {
+  const xs: Array<T> = config.reduce((prev, curr) => {
     const routes = importDir('./' + curr.folder)
     const router = new Router({ prefix. curr.prefix })
 
@@ -19,5 +18,5 @@ export default function () {
     return [router.routes(), ...prev]
   }, [])
 
-  return compose(c)
+  return compose(xs)
 }

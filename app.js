@@ -1,7 +1,7 @@
 'use strict'
 
 import app from './server'
-import { databaseConnector } from './server/db'
+import { databaseConnector } from './server/database'
 
 const port: number = process.env.POST || 8080
 const dbConfig: string = (process.env.NODE_DEV === 'production')

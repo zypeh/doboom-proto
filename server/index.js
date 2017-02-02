@@ -1,19 +1,20 @@
+'use strict'
+
 import Koa from 'koa'
 import Middleware from './middleware'
 import Renderer from './renderer'
-import Server from './server'
-import API from './apis'
+import Routes from './routes'
+import Serve from './server'
+import Auth from './auth'
 
 const app = new Koa()
-const renderer = Renderer(app)
-
-// Wrapping app instance because of the renderer
 
 app
-  .use(ctx => ctx.renderer = renderer)
-  .use(Server())
-  .use(Middleware())
-  .use(API())
-  .use(ctx => ctx.status = 404)
+  .use(ctx => ctx.renderer = renderer) // Setup renderer in context
+  .use(Serve())                        // Setup SSR (server-side-rendering)
+  .use(Auth())                         // Initialize passportjs middleware
+  .use(Middleware())                   // Contains 3rd parties middlewares
+  .use(Routes())                       // Contains internal apis
+  .use(ctx => ctx.status = 404)        // Return 404 Not Found
 
 export default app

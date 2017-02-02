@@ -13,10 +13,9 @@ export default new CustomStrategy(async (ctx, done) => {
         }
         /* TODO check user profile completeness */
 
-        // No user found
-        if (!auth_user)
+        if (auth_user)
+            done(null, auth_user)
+        else
             done(null, false)
-        
-        done(null, auth_user)
     }
 })
