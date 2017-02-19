@@ -1,9 +1,10 @@
 import Vue from 'vue'
-/* TODO: router, stores */
+import store from './store'
+import router from './router'
 import { sync } from 'vuex-router-sync'
 
 // Sync `vue-router`'s state with vuex's store, this is to
-// allow us to manipulate change of view via statas.
+// allow us to manipulate change of view via status.
 sync(store, router)
 
 const app = new Vue({
