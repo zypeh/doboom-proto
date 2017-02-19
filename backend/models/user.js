@@ -18,9 +18,9 @@ const UserSchema = new mongoose.Schema({
     },
 
     provider: {
-        facebook: { type: Array, default: [] },
-        google:   { type: Array, default: [] },
-        twitter:  { type: Array, default: [] },
+        facebook: { type: Object, default: null },
+        google:   { type: Object, default: null },
+        twitter:  { type: Object, default: null },
     },
 
 }, {

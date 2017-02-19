@@ -1,7 +1,6 @@
 'use strict'
 
 import bodyParser from 'koa-better-body'
-import compress from 'koa-compress'
 import compose from 'koa-compose'
 import convert from 'koa-convert'
 import logger from 'koa-logger'
@@ -16,9 +15,6 @@ export default () => compose([
 
     // error handling
     errhandler,
-
-    // compress
-    compress({ threshold: 0 }),
 
     // body parser
     convert(bodyParser()),
