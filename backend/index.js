@@ -11,10 +11,10 @@ const app = new Koa()
 
 app
   .use(ctx => ctx.renderer = renderer) // Setup renderer in context
-  .use(Serve())                        // Setup SSR (server-side-rendering)
-  .use(Auth())                         // Initialize passportjs middleware
   .use(Middleware())                   // Contains 3rd parties middlewares
+  .use(Auth())                         // Initialize passportjs middleware
   .use(Routes())                       // Contains internal apis
+  .use(Serve())                        // Setup SSR (server-side-rendering)
   .use(ctx => ctx.status = 404)        // Return 404 Not Found
 
 export default app
