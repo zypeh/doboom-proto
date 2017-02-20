@@ -41,7 +41,7 @@ const serve = (path: String, cache) => Serve(resolve(path), {
             : 0
 })
 
-async function server(ctx, next) {
+async function server(ctx) {
     if (!renderer) {
         ctx.status = 200
         ctx.body = `Wait for a while... refresh in a moment.`
