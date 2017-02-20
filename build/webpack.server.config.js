@@ -1,10 +1,10 @@
 import webpack from 'webpack'
 import base from './webpack.base.config'
+import VueSSRPlugin from 'vue-ssr-webpack-plugin'
 
 const config = Object.assign({}, base, {
   target: 'node',
-  devtool: false,
-  entry: './frontend/server-entry.js',
+  entry: './frontend/entry-server.js'
   output: Object.assign({}, base.output, {
     filename: 'server-bundle.js',
     libraryTarget: 'commonjs2'
@@ -19,7 +19,8 @@ const config = Object.assign({}, base, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"server"'
-    })
+    }),
+    new VueSSRPlugin()
   ]
 })
 

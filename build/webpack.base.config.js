@@ -4,9 +4,9 @@ import vueConfig from './vue-loader.config'
 export default {
   devtool: '#source-map',
   entry: {
-    app: './frontend/client-entry.js',
+    app: './frontend/entry-client.js',
     vendor: [
-      'es6-promise',
+      'es6-promise/auto',
       'vue',
       'vue-router',
       'vuex',
