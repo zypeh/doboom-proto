@@ -3,25 +3,17 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
-    mode: 'history',
-    routes: [{
-        path: '/',
-        component: require('../views/Home')
-    }, {
-        path: '/user/:id',
-        component: require('../views/User'),
-        children: [
-            { path: '', component: require('../views/UserHome') },
-            { path: '', component: require('../views/UserProfile') },
-            { path: '', component: require('../views/UserPosts') }
-        ]
+// Using webpack code splitting here so that each route's associated
+// component code is loaded on-demand (lazily) when the route is visited.
 
-    }, {
-        path: '/login',
-        component: require('../views/Login')
-    }, {
-        path: '/register',
-        component: require('../views/Register')
-    }]
+// Babel is supported via plugin: `babel-plugin-syntax-dynamic-import`
+const HomeView = () => import('')
+const UserProfile = () => import('')
+
+export default new Router({
+  mode: 'history',
+  scrollBehavior: () => ({ y: 0 }),
+  routes: [
+    { path: '/', component: HomeView },
+    { path: '/user/:user_id', component: UserProfile }
 })
