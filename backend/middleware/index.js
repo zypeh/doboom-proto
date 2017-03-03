@@ -21,8 +21,7 @@ export default () => compose([
 
     // Cross-Origin Resource Sharing
     cors(),
-  ])
-}
+])
 
 async function swagness(ctx, next) {
   ctx.set('X-Powered-By', 'something swag')

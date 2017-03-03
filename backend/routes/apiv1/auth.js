@@ -23,7 +23,7 @@ export default (router) => router
 
     // renew JWT token
     .get(
-        '/auth/refresh'
+        '/auth/refresh',
         isAuthenticated(),
         generateToken(),
     )
@@ -70,7 +70,6 @@ export default (router) => router
         authGoogle_callback(),
         generateToken(),
     )
-}
 
 const register = async (ctx, next) => {
     const { username, email, password } = ctx.request.body

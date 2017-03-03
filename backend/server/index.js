@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import Route from 'koa-router'
 import Serve from 'koa-static'
+import favicon from 'koa-favicon'
 import compress from 'koa-compress'
 import HTMLStream from 'vue-ssr-html-stream'
 
@@ -14,7 +15,7 @@ export default () => conpose([
     compression({ threshold: 0 }),
 
     // favicon
-    favicon('../../public/favicon.png')
+    favicon('../../public/favicon.png'),
 
     // distribution file
     serve('../../dist'),
@@ -52,7 +53,7 @@ async function server(ctx) {
     // Header
     ctx.set('Content-Type', 'text/html')
 
-    const context = { url: ctx.url }
+    const context = { url: ctx.originalUrl }
     const htmlStream = new htmlStream({ template, context })
 
     ctx.body = renderer.renderToStream(context)

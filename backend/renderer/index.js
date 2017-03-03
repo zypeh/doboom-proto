@@ -1,7 +1,7 @@
 import LRU from 'lru-cache'
 import Renderer from 'vue-server-renderer'
 
-export default createRenderer = (bundle) => {
+export const createRenderer = (bundle) => {
     return Renderer.createBundleRenderer(bundle, {
         cache: LRU({
             max: 1000,

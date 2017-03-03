@@ -3,7 +3,7 @@
 import colors from 'colors'
 import mongoose from 'mongoose'
 
-export function (url: string) {
+export default (url: string) => {
   return new Promsie(async (resolve, reject) => {
 
     mongoose.connection

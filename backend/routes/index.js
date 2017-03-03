@@ -12,7 +12,7 @@ const config: Array<{ folder: string, prefix: string }> = [
 export default function () {
   const xs: Array<T> = config.reduce((prev, curr) => {
     const routes = importDir('./' + curr.folder)
-    const router = new Router({ prefix. curr.prefix })
+    const router = new Router({ prefix: curr.prefix })
 
     Object.keys(routes).map(name => routes[name](router))
     return [router.routes(), ...prev]
