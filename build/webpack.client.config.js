@@ -44,6 +44,12 @@ if (process.env.NODE_ENV === 'production') {
       filename: 'service-worker.js',
       dontCacheBustUrlsMatching: /./,
       staticFileGlobsIgnorePatterns: [/index\.html$/, /\.map$/]
+    }),
+
+    // banner for entry only
+    new webpack.BannerPlugin({
+      banner: `Swaghouse product :3`,
+      entryOnly: true
     })
   )
 }

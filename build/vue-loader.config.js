@@ -1,7 +1,9 @@
+import autoprefixer from 'autoprefixer'
+
 export default {
   preserveWhitespace: false,
   postcss: [
-    require('autoprefixer')({
+    autoprefixer({
       browsers: ['last 3 versions']
     })
   ]

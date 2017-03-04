@@ -5,8 +5,11 @@ export default {
   devtool: '#source-map',
   entry: {
     app: './frontend/entry-client.js',
+    // The resulting chunked file can be loaded once initialy
+    // pagespeed optimizations as the browser can quickly serve
+    // the shared code from cache, rather than being forced to
+    // load a larger bundle whenever a new page is visited.
     vendor: [
-      'es6-promise/auto',
       'vue',
       'vue-router',
       'vuex',
@@ -24,7 +27,7 @@ export default {
     }
   },
   module: {
-    noParse: /es6-promise\.js$/, // avoid webpack shimming process
+    noParse: /\.min\.js$/, // avoid webpack shimming process
     rules: [
       {
         test: /\.vue$/,
