@@ -3,9 +3,9 @@ import webpack from 'webpack'
 import memoryfs from 'memory-fs'
 import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware'
 
-import { clientConfig } from './webpack.client.config'
-import { serverConfig } from './webpack.server.config'
-
+// Webpack configuration
+import clientConfig from './webpack.client.config'
+import serverConfig from './webpack.server.config'
 
 export default (app: Object, opts: Object) => {
   // modify client config to work with hot middleware
@@ -43,7 +43,7 @@ export default (app: Object, opts: Object) => {
   const serverCompiler = webpack(serverConfig)
   const mfs = new memoryfs()
 
-  serverCompiler.outputFileSystem = memoryfs
+  serverCompiler.outputFileSystem = mfs
   serverCompiler.watch({}, (err, stats) => {
     if (err) throw err
     stats = stats.toJson()

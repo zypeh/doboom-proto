@@ -4,7 +4,7 @@ import VueSSRPlugin from 'vue-ssr-webpack-plugin'
 
 const config = Object.assign({}, base, {
   target: 'node',
-  entry: './frontend/entry-server.js'
+  entry: './frontend/entry-server.js',
   output: Object.assign({}, base.output, {
     filename: 'server-bundle.js',
     libraryTarget: 'commonjs2'
