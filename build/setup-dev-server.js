@@ -7,7 +7,7 @@ import { clientConfig } from './webpack.client.config'
 import { serverConfig } from './webpack.server.config'
 
 
-export default function(app: Object, opts: Object) {
+export default (app: Object, opts: Object) => {
   // modify client config to work with hot middleware
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app]
   clientConfig.output.filename = '[name].js'
@@ -42,8 +42,8 @@ export default function(app: Object, opts: Object) {
   // watcher & update server renderer
   const serverCompiler = webpack(serverConfig)
   const mfs = new memoryfs()
-  
-  serverCompiler.outputFileSystem = mfs
+
+  serverCompiler.outputFileSystem = memoryfs
   serverCompiler.watch({}, (err, stats) => {
     if (err) throw err
     stats = stats.toJson()
