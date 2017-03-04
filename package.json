@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev:backend": "nodemon --exec babel-node app.js",
-    "dev:frontend": "webpack-dev-server --inline --hot",
+    "dev:frontend": "nodemon --exec babel-node devServer.js",
     "start": "cross-env nodemon backend-dist/index.js",
     "prebuild": "babel backend -d backend-dist",
     "build": "rimraf dist && rimraf backend-dist && npm run build:client && npm run build:backend",
