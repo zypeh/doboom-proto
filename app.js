@@ -1,9 +1,10 @@
 'use strict'
 
 import app from './backend'
+import colors from 'colors'
 import { databaseConnector } from './backend/database'
 
-const port: number = process.env.POST || 8080
+const port: number = process.env.PORT || 8080
 const dbConfig: string = (process.env.NODE_DEV === 'production')
   ? 'production'
   : 'development'
@@ -19,6 +20,6 @@ const dbConfig: string = (process.env.NODE_DEV === 'production')
   }
 
   await app.listen(port)
-  console.log(`${'@'.green}] Server listening on port ${port}`)
+  console.log(`$[{'@'.green}] Server listening on port ${port}`)
 
 })()
