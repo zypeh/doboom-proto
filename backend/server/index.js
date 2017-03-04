@@ -2,62 +2,76 @@
 
 import fs from 'fs'
 import path from 'path'
+import LRU from 'lru-cache'
 import Route from 'koa-router'
 import Serve from 'koa-static'
+import compose from 'koa-compose'
 import favicon from 'koa-favicon'
 import compress from 'koa-compress'
+import Renderer from 'vue-server-renderer'
 import HTMLStream from 'vue-ssr-html-stream'
 
 const isProd = process.env.NODE_ENV === 'production'
+const Router = new Route()
 
-export default () => conpose([
-    // compression
-    compression({ threshold: 0 }),
+export default () => compose([
+  // compression
+  compress({ threshold: 0 }),
 
-    // favicon
-    favicon('../../public/favicon.png'),
+  // favicon
+  favicon('../../public/favicon.png'),
 
-    // distribution file
-    serve('../../dist'),
+  // distribution file
+  serve('../../dist'),
 
-    // public path expose
-    serve('../../public'),
+  // public path expose
+  serve('../../public'),
 
-    // manifest for PWA
-    serve('../../manifest.json'),
+  // manifest for PWA
+  serve('../../manifest.json'),
 
-    // service worker
-    serve('../../dist/service-worker.js'),
+  // service worker
+  serve('../../dist/service-worker.js'),
 
-    // warmup renderer
-    Route.get('*', server),
-
+  // warmup renderer
+  Router.routes(),
+  Router.allowedMethods(),
 ])
 
-const resolve = (file: String) => path.resolve(__dirname, file)
+Router.get('*', server)
 
-const serve = (path: String, cache) => Serve(resolve(path), {
-    maxAge: (cache && isProd)
-            ? 60 * 60 * 24 * 30
-            : 0
+const resolve = (file: string) => path.resolve(__dirname, file)
+
+const serve = (path: string, cache) => Serve(resolve(path), {
+  maxAge: (cache && isProd)
+        ? 60 * 60 * 24 * 30
+        : 0
 })
 
 async function server(ctx) {
-    if (!renderer) {
-        ctx.status = 200
-        ctx.body = `Wait for a while... refresh in a moment.`
-    }
 
-    const s = Date.now()
+  if (!ctx.renderer) {
+    ctx.status = 200
+    ctx.body = `Wait for a while... refresh in a moment.`
+  }
 
-    // Header
-    ctx.set('Content-Type', 'text/html')
+  const s = Date.now()
 
-    const context = { url: ctx.originalUrl }
-    const htmlStream = new htmlStream({ template, context })
+  // Header
+  ctx.set('Content-Type', 'text/html')
 
-    ctx.body = renderer.renderToStream(context)
-        .on('error', () => ctx.throw(500, `Error occurred during rendering on ${context.url}`))
-        .pipe(htmlStream)
-        .on('end', () => console.log(`Whole request taken: ${Date.now() - s}ms`))
+  const context = { url: ctx.originalUrl }
+  const htmlStream = new htmlStream({ template, context })
+
+  ctx.body = ctx.renderer.renderToStream(context)
+    .on('error', () => ctx.throw(500, `Error occurred during rendering on ${context.url}`))
+    .pipe(htmlStream)
+    .on('end', () => console.log(`Whole request taken: ${Date.now() - s}ms`))
 }
+
+export const createRenderer = (bundle: string) => Renderer.createRenderer(bundle, {
+  cache: LRU({
+    max: 1000,
+    maxAge: 1000 * 60 * 15
+  })
+})
