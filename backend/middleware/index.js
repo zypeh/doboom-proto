@@ -7,20 +7,20 @@ import logger from 'koa-logger'
 import cors from 'kcors'
 
 export default () => compose([
-    // logger
-    logger(),
+  // logger
+  logger(),
 
-    // fancy candy
-    swagness,
+  // fancy candy
+  swagness,
 
-    // error handling
-    errhandler,
+  // error handling
+  errhandler,
 
-    // body parser
-    convert(bodyParser()),
+  // body parser
+  convert(bodyParser()),
 
-    // Cross-Origin Resource Sharing
-    cors(),
+  // Cross-Origin Resource Sharing
+  cors(),
 ])
 
 async function swagness(ctx, next) {
