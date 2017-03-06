@@ -24,6 +24,7 @@
     "url": "git+https://github.com/zypeh/swaghouse.git"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bcrypt": "^1.0.2",
     "colors": "^1.1.2",
     "import-dir": "^0.0.1",
