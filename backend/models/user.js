@@ -11,6 +11,10 @@ const UserSchema = new mongoose.Schema({
     username: { type: String, unique: true },
     password: { type: String },
 
+    // avatar
+    avatar: { type: String, default: null },
+    custom_avatar: { type: Boolean, default: false },
+
     provider_id: {
         facebook: { type: String, default: null },
         google:   { type: String, default: null },
