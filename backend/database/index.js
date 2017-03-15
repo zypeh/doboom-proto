@@ -8,7 +8,7 @@ export default (url: string) => {
 
     mongoose.connection
       // Error handling
-      .on('error', err => rejecet(err))
+      .on('error', err => reject(err))
 
       // When the connection closed
       .on('close', () => console.log(`[${'!'.red}]  Database connection closed`) )
