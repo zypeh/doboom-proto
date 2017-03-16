@@ -8,8 +8,7 @@ import Serve from 'koa-static'
 import compose from 'koa-compose'
 import favicon from 'koa-favicon'
 import compress from 'koa-compress'
-import Renderer from 'vue-server-renderer'
-import HTMLStream from 'vue-ssr-html-stream'
+import { createBundleRenderer } from 'vue-server-renderer'
 
 const isProd = process.env.NODE_ENV === 'production'
 const Router = new Route()
@@ -61,17 +60,19 @@ async function server(ctx) {
   ctx.set('Content-Type', 'text/html')
 
   const context = { url: ctx.originalUrl }
-  const htmlStream = new htmlStream({ template, context })
 
-  ctx.body = ctx.renderer.renderToStream(context)
+  ctx.renderer.renderToStream(context)
     .on('error', () => ctx.throw(500, `Error occurred during rendering on ${context.url}`))
-    .pipe(htmlStream)
     .on('end', () => console.log(`Whole request taken: ${Date.now() - s}ms`))
+    .pipe(ctx.body)
 }
 
-export const createRenderer = (bundle: string) => Renderer.createRenderer(bundle, {
-  cache: LRU({
-    max: 1000,
-    maxAge: 1000 * 60 * 15
+export const createRenderer = (bundle: string, template: string) => {
+  return createBundleRenderer(bundle, {
+    template,
+    cache: LRU({
+      max: 1000,
+      maxAge: 1000 * 60 * 15
+    })
   })
-})
+}
