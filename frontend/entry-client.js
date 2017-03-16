@@ -2,7 +2,8 @@ import { app, store, router } from './app'
 
 // Update the store with server-initialized state
 // the state is determined during SSR and inlined in the page markup.
-// store.replaceState(window.__INITIAL_STATE__)
+if (window.__INITIAL_STATE__)
+  store.replaceState(window.__INITIAL_STATE__)
 
 // Mount the app DOM tree
 router.onReady(() => {

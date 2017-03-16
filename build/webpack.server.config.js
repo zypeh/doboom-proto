@@ -1,18 +1,19 @@
 import webpack from 'webpack'
+import merge from 'webpack-merge'
 import base from './webpack.base.config'
 import VueSSRPlugin from 'vue-ssr-webpack-plugin'
 
-const config = Object.assign({}, base, {
+const config = merge(base, {
   target: 'node',
   entry: './frontend/entry-server.js',
-  output: Object.assign({}, base.output, {
+  output: {
     filename: 'server-bundle.js',
     libraryTarget: 'commonjs2'
-  }),
+  },
   resolve: {
-    alias: Object.assign({}, base.resolve.alias, {
+    alias: {
       'create-api': './create-api-server.js'
-    })
+    }
   },
   externals: Object.keys(require('../package.json').dependencies),
   plugins: [

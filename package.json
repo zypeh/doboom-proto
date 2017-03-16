@@ -54,6 +54,7 @@
     "vue-router": "^2.2.1",
     "vue-server-renderer": "^2.1.10",
     "vue-ssr-html-stream": "^2.1.0",
+    "vue-style-loader": "^2.0.4",
     "vuex": "^2.1.2",
     "vuex-router-sync": "^4.1.2"
   },
@@ -83,6 +84,7 @@
     "vue-ssr-webpack-plugin": "^1.0.2",
     "vue-template-compiler": "^2.1.8",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "webpack-merge": "^4.1.0"
   }
 }
