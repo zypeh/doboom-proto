@@ -1,6 +1,6 @@
 'use strict'
 
-import User from '../../models/User'
+import User from '../../models/user'
 import { Strategy as CustomStrategy } from 'passport-custom'
 
 export default new CustomStrategy(async (ctx, done) => {

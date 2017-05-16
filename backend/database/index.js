@@ -1,29 +1,16 @@
-'use strict'
+'use strict';
 
-import colors from 'colors'
-import mongoose from 'mongoose'
+import Sequalize from 'sequelize'
 
-export default (url: string) => {
-  return new Promsie(async (resolve, reject) => {
+const env = process.env.NODE_ENV || 'development'
+const config = require(path.join(__dirname, 'config.json'))[env]
 
-    mongoose.connection
-      // Error handling
-      .on('error', err => reject(err))
+// Sequelize('database', 'username', 'password' , config_obj{})
+const sequelize = new Seqialize(config.database, config.username, config.password, config)
 
-      // When the connection closed
-      .on('close', () => console.log(`[${'!'.red}]  Database connection closed`) )
+sequelize
+  .authenticate()
+  .then(success => console.error(`Connection established successfully`))
+  .catch(err => console.error(`Unable to connection to the database: ${err}`))
 
-      // When the connection is opened
-      .once('open', () => resolve(mongoose.connection[0]))
-
-    try {
-      await mongoose.connect(uri)
-    } catch (e) { 
-      reject (e)
-    }
-
-    // Gracefully shutdown when INTERRUPT signal occurred
-    process.on('SIGINT', () => mongoose.connection.close(() => process.exit(0)))
-  })
-}
-
+export default sequelize

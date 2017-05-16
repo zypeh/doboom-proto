@@ -1,0 +1,16 @@
+{
+  "development": {
+    "dialect": "postgres",
+    "username": "clu",
+    "password": "password123",
+    "database": "doboom",
+    "host": "127.0.0.1"
+  },
+  "production": {
+    "dialect": "postgres",
+    "username": "clu",
+    "password": "password123",
+    "database": "doboom",
+    "host": "127.0.0.1"
+  }
+}

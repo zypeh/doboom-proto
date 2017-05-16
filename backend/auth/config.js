@@ -1,22 +1,22 @@
 'use strict'
 
 export const FACEBOOK = {
-  clientId: '',
-  clientSecret: '',
-  callbackURL: '',
+  clientID: '123',
+  clientSecret: '123',
+  callbackURL: '123',
   enableProf: true,
 }
 
 export const GOOGLE = {
-  clientId: '',
-  clientSecret: '',
-  callbackURL: '',
+  clientID: '123',
+  clientSecret: '123',
+  callbackURL: '123',
 }
 
 export const TWITTER = {
-  consumerKey: '',
-  consumerSecret: '',
-  callbackURL: '',
+  consumerKey: '123',
+  consumerSecret: '123',
+  callbackURL: '123',
 }
 
 export const SWAGHOUSE = {

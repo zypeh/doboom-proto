@@ -12,12 +12,12 @@ import twitterStrategy from './strategies/twitter'
 import facebookStrategy from './strategies/facebook'
 
 // User model
-import User from '../../models/user'
+import User from '../models/User'
 
 // Register passport method
 passport
-    .use('jwt', jwtStategy)
-    .use('email', emailStrategy)
+    .use('jwt', jwtStrategy)
+    //.use('email', emailStrategy)
     .use('google', googleStrategy)
     .use('twitter', twitterStrategy)
     .use('facebook', facebookStrategy)
@@ -65,7 +65,7 @@ export const authFacebook = () => async (ctx, next) => {
   if (typeof code !== 'string')
     ctx.throw(500, `Invalid input 'code', must be a string`)
 
-  const result = await FabookReq(code)
+  const result = await facebookOauth(code)
 
   let [has_facebook, has_registered] = await Promise.all([
     await User.findOne({ 'provider.facebook.id': result.id }).exec(),
@@ -83,7 +83,7 @@ export const authFacebook = () => async (ctx, next) => {
   await next()
 }
 
-const authTwitter = async (ctx, next) => {
+export const authTwitter = () => async (ctx, next) => {
   const { code } = ctx.request.fields
 
   if (typeof code !== 'string')
@@ -107,7 +107,7 @@ const authTwitter = async (ctx, next) => {
   await next()
 }
 
-const authGoogle = async (ctx, next) => {
+export const authGoogle = () => async (ctx, next) => {
   const { code } = ctx.request.fields
 
   if (typeof code !== 'string')

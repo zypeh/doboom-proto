@@ -6,6 +6,7 @@ import {
     authTwitter,
     authFacebook,
     generateToken,
+    isAuthenticated,
 } from '../../auth'
 import User from '../../models/User'
 
@@ -38,7 +39,7 @@ export default (router) => router
     generateToken(),
   )
 
-  // Authenticate via twitter
+  //Authenticate via twitter
   .post(
     '/auth/twitter',
     authTwitter(),

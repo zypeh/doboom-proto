@@ -1,12 +1,12 @@
 'use strict'
 
 import importDir from 'import-dir'
-import composr from 'koa-compose'
+import compose from 'koa-compose'
 import Router from 'koa-router'
 
 const config: Array<{ folder: string, prefix: string }> = [
   { folder: 'apiv1', prefix: '/api/v1/' },
-  { folder: 'base', prefix: '' },
+  //{ folder: 'base', prefix: '' },
 ]
 
 export default function () {
