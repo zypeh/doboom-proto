@@ -12,11 +12,11 @@ import User from '../../models/User'
 
 export default (router) => router
   // register via email
-  .post(
-    '/auth/register',
-    register,
-    generateToken(),
-  )
+  //.post(
+  //  '/auth/register',
+  //  register,
+  //  generateToken(),
+  //)
 
   // renew JWT token
   .get(
@@ -53,4 +53,4 @@ export default (router) => router
     generateToken(),
   )
 
-const register = async (ctx, next) => { }
+//const register = async (ctx, next) => { }

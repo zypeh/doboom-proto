@@ -6,7 +6,7 @@ import Router from 'koa-router'
 
 const config: Array<{ folder: string, prefix: string }> = [
   { folder: 'apiv1', prefix: '/api/v1/' },
-  //{ folder: 'base', prefix: '' },
+  { folder: 'base', prefix: '' },
 ]
 
 export default function () {
