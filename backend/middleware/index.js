@@ -24,7 +24,7 @@ export default () => compose([
 ])
 
 async function swagness(ctx, next) {
-  ctx.set('X-Powered-By', 'something swag')
+  ctx.set('X-Powered-By', 'madoka')
   await next()
 }
 
