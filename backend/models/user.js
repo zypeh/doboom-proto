@@ -2,6 +2,8 @@
 
 export default (sequelize, DataTypes: Object) => {
   // Definition
+  const STRING_NOTNULLABLE = { type: DataTypes.STRING, allowNull: false }
+
   const User = sequelize.define('User', {
     id: {
       comment: `This is PG database's primary key, private.`,
@@ -10,10 +12,10 @@ export default (sequelize, DataTypes: Object) => {
       primaryKey: true
     },
     // Oauth information
-    username: { type: DataTypes.STRING, allowNull: false },
-    name:     { type: DataTypes.STRING, allowNull: false },
-    email:    { type: DataTypes.STRING, allowNull: false },
-    avatar:   { type: DataTypes.STRING, allowNull: false },
+    Username: STRING_NOTNULLABLE, // @username
+    Name:     STRING_NOTNULLABLE,
+    // Email:    STRING_NOTNULLABLE,
+    Avatar:   STRING_NOTNULLABLE,
   })
   return User
 }
