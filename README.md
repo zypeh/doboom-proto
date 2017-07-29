@@ -7,4 +7,3 @@
 
 * `backend/` is for backend, API, and experimental toys.
 * `docs/` contains documentations.
-* `app.js` is our app instance's entry point.
